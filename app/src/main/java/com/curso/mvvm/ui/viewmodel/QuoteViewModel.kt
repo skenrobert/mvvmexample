@@ -20,13 +20,13 @@ class QuoteViewModel @Inject constructor(
     val isLoading = MutableLiveData<Boolean>()
 
     fun onCreate() {
-        viewModelScope.launch {
-            isLoading.postValue(true)
+        viewModelScope.launch {//auto killtask in the case coroutine freeze
+            isLoading.postValue(true)//progress bar
             val result = getQuotesUseCase()
 
             if (!result.isNullOrEmpty()) {
                 quoteModel.postValue(result[0])
-                isLoading.postValue(false)
+                isLoading.postValue(false)// hide progress bar
             }
         }
     }

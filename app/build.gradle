@@ -1,11 +1,17 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'com.android.application'  version '7.4.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+    id 'com.android.library' version '7.4.2' apply false
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+//    id 'com.google.gms.google-services'
 }
+
 
 android {
     namespace 'com.curso.mvvm'
     compileSdk 33
+    buildToolsVersion "30.0.3"//
 
     defaultConfig {
         applicationId "com.curso.mvvm"
@@ -37,6 +43,7 @@ android {
 
 dependencies {
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -57,11 +64,11 @@ dependencies {
       //Corrutinas
       implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 //    //dagger hilt
-//      implementation "com.google.dagger:hilt-android:$hilt_version"
-//      kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+      implementation "com.google.dagger:hilt-android:$hilt_version"
+      kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 //    //Room
      implementation "androidx.room:room-ktx:2.4.0"
-//     kapt "androidx.room:room-compiler:2.4.0"
+     kapt "androidx.room:room-compiler:2.4.0"
 
     testImplementation 'junit:junit:4.13.2'
 
