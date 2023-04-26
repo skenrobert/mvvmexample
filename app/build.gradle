@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -60,11 +62,11 @@ dependencies {
     //Corrutinas
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 //    //dagger hilt
-      implementation "com.google.dagger:hilt-android:$hilt_version"
-//      kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+      implementation "com.google.dagger:hilt-android:2.43.2"
+      kapt "com.google.dagger:hilt-android-compiler:2.43.2"
 //    //Room
     implementation "androidx.room:room-ktx:2.4.0"
-//     kapt "androidx.room:room-compiler:2.4.0"
+     kapt "androidx.room:room-compiler:2.4.0"
 
     testImplementation 'junit:junit:4.13.2'
 
