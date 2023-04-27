@@ -1,5 +1,6 @@
 package com.curso.mvvm.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,27 +13,30 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuoteViewModel @Inject constructor(
-    private val getQuotesUseCase: GetQuotesUseCase,
-    private val getRandomQuoteUseCase: GetRandomQuoteUseCase
+    private val getQuotesUseCase: GetQuotesUseCase, // domain.GetQuotesUseCase
+    private val getRandomQuoteUseCase: GetRandomQuoteUseCase // domain.GetRandomQuoteUseCase
 ) : ViewModel() {
 
-    val quoteModel = MutableLiveData<Quote>()
-    val isLoading = MutableLiveData<Boolean>()
+    val quoteModel = MutableLiveData<Quote>() // save result api (all result is a list mutable)
+    val isLoading = MutableLiveData<Boolean>() // active loading in layout, when wait result of server
 
     fun onCreate() {
-        viewModelScope.launch {//auto killtask in the case coroutine freeze
+        viewModelScope.launch {//auto kill task in the case coroutine freeze
             isLoading.postValue(true)//progress bar
             val result = getQuotesUseCase()
 
-            if (!result.isNullOrEmpty()) {
+            if (!result.isNullOrEmpty()) {//if no null or empty TODO("in the case which server fail, never isLoading parse false, is need better")
                 quoteModel.postValue(result[0])
+                Log.i("QuoteViewModel", "result in quoteviewmodel = ${result[0]}, ${result[1]}, ${result[2]}" )
+                //Log.i("btnapp", "Button Pulsado ${editName.text.toString()}")
+
                 isLoading.postValue(false)// hide progress bar
             }
         }
     }
 
-    fun randomQuote() {
-        viewModelScope.launch {
+    fun randomQuote() { // Call the local save quote and apply Random, Simulate API consumption but is local, better performance, in project no need real time
+        viewModelScope.launch {// coroutine automatically in case fail, not freeze app
             isLoading.postValue(true)
             val quote = getRandomQuoteUseCase()
             quote?.let {

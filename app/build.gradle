@@ -48,25 +48,25 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
 
-    // Fragment
+    // Fragment no use in this project is that same below activity
     implementation "androidx.fragment:fragment-ktx:1.3.2"
-    // Activity
+    // Activity allow communication more fast between  viewModel and model
     implementation "androidx.activity:activity-ktx:1.2.2"
-    // ViewModel
+    // ViewModel for layout architecture
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
-    // LiveData
+    // LiveData allow observer(pattern) change in the activity automatically call viewModel
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     //Corrutinas
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
-//    //dagger hilt
-      implementation "com.google.dagger:hilt-android:2.43.2"
-      kapt "com.google.dagger:hilt-android-compiler:2.43.2"
-//    //Room
+    //dagger hilt
+    implementation "com.google.dagger:hilt-android:2.43.2"
+    kapt "com.google.dagger:hilt-android-compiler:2.43.2"
+    //Room
     implementation "androidx.room:room-ktx:2.4.0"
-     kapt "androidx.room:room-compiler:2.4.0"
+    kapt "androidx.room:room-compiler:2.4.0"
 
     testImplementation 'junit:junit:4.13.2'
 

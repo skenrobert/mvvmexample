@@ -6,7 +6,7 @@ import com.curso.mvvm.domain.model.Quote
 import javax.inject.Inject
 
 class GetQuotesUseCase @Inject constructor(private val repository: QuoteRepository) {
-    suspend operator fun invoke():List<Quote>{
+    suspend operator fun invoke():List<Quote>{//invoke is the same (val getQuotesUseCase = getQuotesUseCase() ), and return after realize calculate
         val quotes = repository.getAllQuotesFromApi()
 
         return if(quotes.isNotEmpty()){
