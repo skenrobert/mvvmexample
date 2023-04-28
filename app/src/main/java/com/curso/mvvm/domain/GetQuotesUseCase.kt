@@ -5,7 +5,7 @@ import com.curso.mvvm.data.database.entities.toDatabase
 import com.curso.mvvm.domain.model.Quote
 import javax.inject.Inject
 
-class GetQuotesUseCase @Inject constructor(private val repository: QuoteRepository) {
+class GetQuotesUseCase @Inject constructor(private val repository: QuoteRepository) { //this class prepared for inject with dagger hil ( @Inject constructor)
     suspend operator fun invoke():List<Quote>{//invoke is the same (val getQuotesUseCase = getQuotesUseCase() ), and return after realize calculate
         val quotes = repository.getAllQuotesFromApi()
 

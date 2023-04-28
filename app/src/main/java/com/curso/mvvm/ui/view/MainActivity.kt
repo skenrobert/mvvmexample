@@ -10,7 +10,7 @@ import com.curso.mvvm.ui.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
+@AndroidEntryPoint //config of HiltAndroidApp (root.MvvmApp), You have to prepare the class to be injectable in here
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

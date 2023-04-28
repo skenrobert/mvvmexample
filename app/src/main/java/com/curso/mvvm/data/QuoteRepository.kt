@@ -8,7 +8,7 @@ import com.curso.mvvm.domain.model.Quote
 import com.curso.mvvm.domain.model.toDomain
 import javax.inject.Inject
 
-class QuoteRepository @Inject constructor( //TODO: resolve for where go the consult for network in this package, this class main for get quote
+class QuoteRepository @Inject constructor( //TODO: resolve for where go the consult for network in this package, this class main for get quote, this class is inject con dagger hill ( @Inject constructor)
     private val api: QuoteService,// recuperate all list Quote
     private val quoteDao: QuoteDao
 ) {

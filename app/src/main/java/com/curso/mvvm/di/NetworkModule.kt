@@ -9,12 +9,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
+@Module // module provider dependencies
+@InstallIn(SingletonComponent::class) //in this you declare instance for all project, exist many level (box alliance)
 object NetworkModule {
 
-    @Singleton
-    @Provides
+    @Singleton // is recommend singleton allow create only instance this class, avoid error
+    @Provides // this form, with you inject library in all project
     fun provideRetrofit():Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://drawsomething-59328-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -22,8 +22,8 @@ object NetworkModule {
             .build()
     }
 
-    @Singleton
-    @Provides
+    @Singleton //only this instance
+    @Provides// you provide any element this form
     fun provideQuoteApiClient(retrofit: Retrofit):QuoteApiClient{
         return retrofit.create(QuoteApiClient::class.java)
     }

@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class QuoteViewModel @Inject constructor(
-    private val getQuotesUseCase: GetQuotesUseCase, // domain.GetQuotesUseCase
-    private val getRandomQuoteUseCase: GetRandomQuoteUseCase // domain.GetRandomQuoteUseCase
+class QuoteViewModel @Inject constructor( // this class is prepared for be inject with dagger hill
+    private val getQuotesUseCase: GetQuotesUseCase, // domain.GetQuotesUseCase (this is a inject)
+    private val getRandomQuoteUseCase: GetRandomQuoteUseCase // domain.GetRandomQuoteUseCase (this is a inject)
 ) : ViewModel() {
 
     val quoteModel = MutableLiveData<Quote>() // save result api (all result is a list mutable)
