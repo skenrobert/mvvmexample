@@ -15,19 +15,19 @@ class QuoteRepository @Inject constructor( //TODO: resolve for where go the cons
 
     suspend fun getAllQuotesFromApi(): List<Quote> {// consult Api
         val response: List<QuoteModel> = api.getQuotes()// Execute The function created in QuoteService
-        return response.map { it.toDomain() }
+        return response.map { it.toDomain() }// behind QuoteModel get main class quote
     }
 
-    suspend fun getAllQuotesFromDatabase():List<Quote>{ // consult DB, if exist
+    suspend fun getAllQuotesFromDatabase():List<Quote>{ // consult DB, if exist (domain.model)
         val response: List<QuoteEntity> = quoteDao.getAllQuotes()
-        return response.map { it.toDomain() }
+        return response.map { it.toDomain() } // behind QuoteEntity get main class quote (domain.model)
     }
 
-    suspend fun insertQuotes(quotes:List<QuoteEntity>){
+    suspend fun insertQuotes(quotes:List<QuoteEntity>){ //use in GetQuotesUseCase for inject
         quoteDao.insertAll(quotes)
     }
 
-    suspend fun clearQuotes(){
-        quoteDao.deleteAllQuotes()
+    suspend fun clearQuotes(){ //function delete all quote data base
+        quoteDao.deleteAllQuotes()//this function is make en QuotesDao
     }
 }
