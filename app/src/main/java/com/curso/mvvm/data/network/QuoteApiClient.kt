@@ -18,7 +18,6 @@ interface QuoteApiClient { //TODO: route specific that api (root api is in core.
     @GET("/.json") //original call
     suspend fun getAllQuotes(): Response<List<QuoteModel>> //get list(json) each Quote
 
-
     //retrofit advance below
     @GET
     fun getCharacterByName(@Url url: String): Call<DogsResponse>
@@ -35,13 +34,13 @@ interface QuoteApiClient { //TODO: route specific that api (root api is in core.
     @POST
     fun getEVERYTHING(@Body exampleParameterDto: ExampleParameterDto): Call<*>
 
-
     @Multipart // split call send. image
     @POST
     fun getEVERYTHING2(
         @Part image: MultipartBody.Part,
         @Part("example") myExample: String
     ): Call<*>
+
 
 //    val requestBody =   RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), file);
 //    val a = MultipartBody.Part.createFormData("picture", file.getName(), requestBody);
