@@ -1,11 +1,15 @@
 package com.curso.mvvm.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import com.curso.mvvm.R
 import com.curso.mvvm.databinding.ActivityMainBinding
+import com.curso.mvvm.quotemain.QuoteMainActivity
 import com.curso.mvvm.ui.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -19,21 +23,42 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        quoteViewModel.onCreate()
+        val btnSaluteApp = findViewById<Button>(R.id.btnQuote)
+        btnSaluteApp.setOnClickListener { navigateToQuoteApp() }
 
-        quoteViewModel.quoteModel.observe(this, Observer {// quote api
-            binding.tvQuote.text = it.quote
-            binding.tvAuthor.text = it.author
-        })
-        quoteViewModel.isLoading.observe(this, Observer {// progress bar activity main
-            binding.loading.isVisible = it
-        })
+        val btnLoginApi = findViewById<Button>(R.id.btnLoginApi)
+        btnSaluteApp.setOnClickListener { navigateToLoginApiApp() }
 
-        binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
 
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+
+
+
+//        quoteViewModel.onCreate()
+//
+//        quoteViewModel.quoteModel.observe(this, Observer {// quote api
+//            binding.tvQuote.text = it.quote
+//            binding.tvAuthor.text = it.author
+//        })
+//        quoteViewModel.isLoading.observe(this, Observer {// progress bar activity main
+//            binding.loading.isVisible = it
+//        })
+//
+//        binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
+
+    }
+
+    private fun navigateToQuoteApp() {
+        val intent = Intent(this, QuoteMainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToLoginApiApp() {
+        val intent = Intent(this, QuoteMainActivity::class.java)
+        startActivity(intent)
     }
 
 }
