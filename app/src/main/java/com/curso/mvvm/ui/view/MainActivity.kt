@@ -25,11 +25,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnSaluteApp = findViewById<Button>(R.id.btnQuote)
-        btnSaluteApp.setOnClickListener { navigateToQuoteApp() }
 
+        val btnQuote = findViewById<Button>(R.id.btnQuote)
+        btnQuote.setOnClickListener { navigateToQuoteApp() }
+
+        
         val btnLoginApi = findViewById<Button>(R.id.btnLoginApi)
-        btnSaluteApp.setOnClickListener { navigateToLoginApiApp() }
+        btnLoginApi.setOnClickListener { navigateToLoginApiApp() }
 
 
 //        binding = ActivityMainBinding.inflate(layoutInflater)
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToLoginApiApp() {
-        val intent = Intent(this, QuoteMainActivity::class.java)
+        val intent = Intent(this, LoginApiActivity::class.java)
         startActivity(intent)
     }
 
