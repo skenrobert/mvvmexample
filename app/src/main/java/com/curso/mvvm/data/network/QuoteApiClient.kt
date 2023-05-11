@@ -44,6 +44,12 @@ interface QuoteApiClient { //TODO: route specific that api (root api is in core.
 
 //    val requestBody =   RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), file);
 //    val a = MultipartBody.Part.createFormData("picture", file.getName(), requestBody);
+
+
+    //*******************************test api example******************************************\
+
+    @GET("https://reqres.in/api/users?page=2")// need path (id)
+    fun getUsers(): Call<*>
 }
 
 data class ExampleParameterDto(val name: String, val age: Int)  //create for example method post recommend move other directory

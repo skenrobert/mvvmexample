@@ -18,4 +18,12 @@ object RetrofitHelper { //TODO: route const that api (specific is in data.networ
         OkHttpClient.Builder()
             .addInterceptor(HeaderInterceptor())// function interceptor add headersInterceptor
             .build()
+
+    fun getRetrofitApiExample(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://reqres.in/api/users?page=2")
+            .addConverterFactory(GsonConverterFactory.create()) // convert Json to Object
+           // .client(getClient()) // call intercept, add headers (headerInterceptor), create below
+            .build()
+    }
 }

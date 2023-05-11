@@ -14,7 +14,7 @@ import com.curso.mvvm.ui.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint //config of HiltAndroidApp (root.MvvmApp), You have to prepare the class to be injectable in here
+//@AndroidEntryPoint //config of HiltAndroidApp (root.MvvmApp), You have to prepare the class to be injectable in here
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val btnQuote = findViewById<Button>(R.id.btnQuote)
         btnQuote.setOnClickListener { navigateToQuoteApp() }
 
-        
+
         val btnLoginApi = findViewById<Button>(R.id.btnLoginApi)
         btnLoginApi.setOnClickListener { navigateToLoginApiApp() }
 

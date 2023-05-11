@@ -30,4 +30,5 @@ class QuoteRepository @Inject constructor( //TODO: resolve for where go the cons
     suspend fun clearQuotes(){ //function delete all quote data base
         quoteDao.deleteAllQuotes()//this function is make en QuotesDao
     }
+
 }
